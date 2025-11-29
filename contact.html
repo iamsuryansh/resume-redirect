@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 2rem;
             position: relative;
             overflow: hidden;
@@ -26,29 +26,25 @@
         body::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 50px); }
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
             border-radius: 24px;
-            padding: 3rem;
-            max-width: 520px;
+            padding: 3rem 2.5rem;
+            max-width: 540px;
             width: 100%;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             position: relative;
             z-index: 1;
         }
@@ -59,79 +55,83 @@
             font-size: 2rem;
             font-weight: 600;
             letter-spacing: -0.02em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
 
         label {
             display: block;
-            color: rgba(255, 255, 255, 0.9);
+            color: #ffffff;
             font-weight: 500;
             margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            letter-spacing: 0.02em;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
         }
 
         input, textarea {
             width: 100%;
             padding: 0.875rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-family: inherit;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.15);
             color: #ffffff;
         }
 
         input::placeholder, textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: rgba(139, 92, 246, 0.6);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
         }
 
         textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 130px;
+            line-height: 1.6;
         }
 
         button {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-            color: white;
+            background: rgba(255, 255, 255, 0.9);
+            color: #5a4db0;
             border: none;
             border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0.5rem;
             letter-spacing: 0.02em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
-        }
-
-        button:active {
-            transform: translateY(0);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: #ffffff;
+        }   transform: translateY(0);
         }
 
         button:disabled {
@@ -147,19 +147,32 @@
             text-align: center;
             font-weight: 500;
             display: none;
-            backdrop-filter: blur(10px);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .status-message.success {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.4);
+            background: rgba(255, 255, 255, 0.95);
+            color: #16a34a;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .status-message.error {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.4);
+            background: rgba(255, 255, 255, 0.95);
+            color: #dc2626;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .status-message.show {
@@ -173,6 +186,10 @@
             
             h1 {
                 font-size: 1.75rem;
+            }
+
+            body {
+                padding: 1rem;
             }
         }
     </style>
