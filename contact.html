@@ -12,34 +12,60 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 24px;
             padding: 3rem;
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
-            color: #333;
+            color: #ffffff;
             margin-bottom: 0.5rem;
             font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
 
         .subtitle {
-            color: #666;
-            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
             font-size: 1rem;
+            line-height: 1.5;
         }
 
         .form-group {
@@ -48,27 +74,34 @@
 
         label {
             display: block;
-            color: #444;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+            font-size: 0.875rem;
+            letter-spacing: 0.02em;
         }
 
         input, textarea {
             width: 100%;
-            padding: 0.875rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 0.875rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             font-size: 1rem;
             font-family: inherit;
             transition: all 0.3s ease;
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: rgba(139, 92, 246, 0.6);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
         }
 
         textarea {
@@ -79,20 +112,22 @@
         button {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 1rem;
+            letter-spacing: 0.02em;
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
         }
 
         button:active {
@@ -107,23 +142,24 @@
 
         .status-message {
             margin-top: 1rem;
-            padding: 0.875rem;
-            border-radius: 10px;
+            padding: 1rem;
+            border-radius: 12px;
             text-align: center;
             font-weight: 500;
             display: none;
+            backdrop-filter: blur(10px);
         }
 
         .status-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 2px solid #c3e6cb;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
         }
 
         .status-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 2px solid #f5c6cb;
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.4);
         }
 
         .status-message.show {
@@ -132,7 +168,7 @@
 
         @media (max-width: 600px) {
             .container {
-                padding: 2rem;
+                padding: 2rem 1.5rem;
             }
             
             h1 {
